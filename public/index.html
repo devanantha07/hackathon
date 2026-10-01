@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Companion | ASIET College Navigator & Student Hub</title>
+  <meta name="description" content="ASIET Campus Companion: Real-time desktop & mobile campus intelligence, navigator, live crowd meter, issue tracking, and student services.">
+  
+  <!-- Modern Typography from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" aria-live="polite"></div>
+
+  <!-- Full-Width Responsive Desktop-First App Layout -->
+  <div class="app-layout" id="app-layout">
+    
+    <!-- ==========================================
+         DESKTOP & TABLET FIXED LEFT SIDEBAR
+         (240px Desktop, 72px Tablet, Hidden on Mobile <768px)
+         ========================================== -->
+    <aside class="app-sidebar" id="app-sidebar">
+      <!-- ASIET Brand Header -->
+      <div class="sidebar-brand" id="sidebar-brand-btn" title="ASIET Campus Companion">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+        </div>
+        <div class="sidebar-brand-text">
+          <div class="sidebar-brand-title">ASIET</div>
+          <div class="sidebar-brand-sub">Campus Companion</div>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="sidebar-nav" aria-label="Main Navigation">
+        <button class="sidebar-link nav-item active" data-view="home" title="Home">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          <span class="nav-text">Home</span>
+        </button>
+
+        <button class="sidebar-link nav-item" data-view="places" title="Places & Navigator">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+          </svg>
+          <span class="nav-text">Places & Map</span>
+        </button>
+
+        <button class="sidebar-link nav-item" data-view="events" title="Events">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span class="nav-text">Events</span>
+        </button>
+
+        <button class="sidebar-link nav-item" data-view="issues" title="Campus Issues">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <span class="nav-text">Campus Issues</span>
+          <span class="sidebar-badge" id="sidebar-issues-badge" style="display: none;">0</span>
+        </button>
+
+        <button class="sidebar-link nav-item" data-view="lostfound" title="Lost & Found">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <span class="nav-text">Lost & Found</span>
+        </button>
+
+        <button class="sidebar-link nav-item" data-view="canteen" title="Canteen Corner">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+            <line x1="6" y1="1" x2="6" y2="4"></line>
+            <line x1="10" y1="1" x2="10" y2="4"></line>
+            <line x1="14" y1="1" x2="14" y2="4"></line>
+          </svg>
+          <span class="nav-text">Canteen & Menu</span>
+        </button>
+
+        <button class="sidebar-link nav-item" data-view="bus" title="Bus Timings">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="15" rx="2"></rect>
+            <line x1="3" y1="9" x2="21" y2="9"></line>
+            <circle cx="7" cy="15" r="1"></circle>
+            <circle cx="17" cy="15" r="1"></circle>
+            <line x1="4" y1="18" x2="4" y2="21"></line>
+            <line x1="20" y1="18" x2="20" y2="21"></line>
+          </svg>
+          <span class="nav-text">Bus Timings</span>
+        </button>
+
+        <button class="sidebar-link nav-item" data-view="contacts" title="Quick Help & Emergency">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          <span class="nav-text">Quick Help</span>
+        </button>
+
+        <!-- Admin Only Navigation Link -->
+        <button class="sidebar-link nav-item" data-view="admin" id="sidebar-admin-link" title="Admin Panel" style="display: none;">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <span class="nav-text">Admin Panel</span>
+          <span class="sidebar-admin-tag">Admin</span>
+        </button>
+      </nav>
+
+      <!-- Sidebar User Profile & Logout -->
+      <div class="sidebar-footer">
+        <div class="sidebar-user" id="sidebar-user-section" title="Account Details">
+          <div class="user-avatar-badge" id="sidebar-user-avatar">?</div>
+          <div class="sidebar-user-meta">
+            <div class="sidebar-user-name" id="sidebar-user-name">Guest Student</div>
+            <div class="sidebar-user-role" id="sidebar-user-role">Click to log in</div>
+          </div>
+          <button class="sidebar-logout-icon" id="sidebar-logout-btn" title="Log Out" style="display: none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="18" height="18" stroke-width="2">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ==========================================
+         MAIN CONTENT WRAPPER
+         ========================================== -->
+    <div class="app-main-wrapper">
+      
+      <!-- Top Bar on Desktop & Mobile -->
+      <header class="app-topbar">
+        <!-- Mobile brand trigger (visible only <768px) -->
+        <div class="topbar-mobile-brand" id="brand-home-btn" title="Home">
+          <div class="brand-icon small">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <span class="mobile-brand-title">ASIET</span>
+        </div>
+
+        <!-- Wide Global Search Bar (uses /api/search) -->
+        <div class="topbar-search">
+          <div class="search-input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="home-search-input" class="search-input" placeholder="Search campus places, events, lost items... (Press Enter to search)" autocomplete="off">
+            <button id="search-clear-btn" class="search-clear-btn" aria-label="Clear Search">&times;</button>
+          </div>
+        </div>
+
+        <!-- Topbar Right Details: College Name & User Profile Button -->
+        <div class="topbar-actions">
+          <div class="topbar-college-info">
+            <span class="college-live-dot"></span>
+            <span class="topbar-college-name" id="header-college-name">ASIET - Adi Shankara Institute of Engineering & Technology</span>
+          </div>
+
+          <button class="user-btn" id="header-auth-btn" aria-label="User Account">
+            <span class="user-avatar-badge" id="header-user-avatar">?</span>
+            <span class="user-btn-name" id="header-user-name">Login</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Scrollable Views Container -->
+      <main class="app-main-content">
+        <div class="content-max-width">
+
+          <!-- ==========================================
+               VIEW 1: HOME (Hero + 3-Column Desktop Grid)
+               ========================================== -->
+          <section id="view-home" class="view-section active">
+            <!-- Full-width hero -->
+            <div class="home-hero-desktop">
+              <div class="hero-top-meta">
+                <span class="hero-badge"><span class="pulse-dot"></span> ASIET Live Campus Assistant</span>
+                <span id="today-date-text" class="hero-date"></span>
+              </div>
+              <h1 class="hero-title">What do you <span>need right now?</span></h1>
+              <p class="hero-subtitle">Instant campus navigation, crowdsourced spots, canteen crowd status, and student services.</p>
+
+              <!-- "What's Near Me?" Hero Chips in a single clean row -->
+              <div class="near-me-strip">
+                <div class="strip-header">
+                  <span class="strip-label">What's Near Me</span>
+                  <span class="strip-count" id="near-me-count">All spots</span>
+                </div>
+                <div class="chips-row" id="near-me-chips">
+                  <button class="chip-btn active" data-type="All">🌟 All</button>
+                  <button class="chip-btn" data-type="Charging">⚡ Charging</button>
+                  <button class="chip-btn" data-type="Food">🍔 Food</button>
+                  <button class="chip-btn" data-type="Washroom">🚻 Washroom</button>
+                  <button class="chip-btn" data-type="Study">📚 Study</button>
+                  <button class="chip-btn" data-type="Printing">🖨️ Printing</button>
+                  <button class="chip-btn" data-type="Water">💧 Water</button>
+                  <button class="chip-btn" data-type="Parking">🅿️ Parking</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Desktop 3-Column Grid Layout -->
+            <div class="home-desktop-grid">
+              
+              <!-- Column 1: Today Feed Pulse Cards -->
+              <div class="home-grid-col today-feed-col">
+                <div class="col-header">
+                  <h3 class="col-title">📊 Today's Campus Pulse</h3>
+                </div>
+
+                <div class="today-feed-cards">
+                  <!-- Next Event Card -->
+                  <div class="today-tile-card" id="today-event-tile" role="button" tabindex="0">
+                    <div class="tile-icon-box" style="background: rgba(99, 102, 241, 0.15); color: #818CF8;">
+                      📅
+                    </div>
+                    <div class="tile-content">
+                      <span class="tile-label">Next Event</span>
+                      <strong class="tile-value" id="today-event-title">Loading...</strong>
+                      <span class="tile-sub" id="today-event-time">--:--</span>
+                    </div>
+                    <span class="tile-arrow">&rarr;</span>
+                  </div>
+
+                  <!-- Canteen Crowd Card -->
+                  <div class="today-tile-card" id="today-canteen-tile" role="button" tabindex="0">
+                    <div class="tile-icon-box" style="background: rgba(16, 185, 129, 0.15); color: #10B981;">
+                      🍽️
+                    </div>
+                    <div class="tile-content">
+                      <span class="tile-label">Canteen Crowd Level</span>
+                      <strong class="tile-value" id="today-canteen-crowd">Checking...</strong>
+                      <span class="tile-sub" id="today-canteen-wait">Wait ~-- mins</span>
+                    </div>
+                    <span class="tile-arrow">&rarr;</span>
+                  </div>
+
+                  <!-- Next Bus Departure Card -->
+                  <div class="today-tile-card" id="today-bus-tile" role="button" tabindex="0">
+                    <div class="tile-icon-box" style="background: rgba(59, 130, 246, 0.15); color: #3B82F6;">
+                      🚌
+                    </div>
+                    <div class="tile-content">
+                      <span class="tile-label">Next Bus Departure</span>
+                      <strong class="tile-value" id="today-bus-route">Checking...</strong>
+                      <span class="tile-sub" id="today-bus-time">--:--</span>
+                    </div>
+                    <span class="tile-arrow">&rarr;</span>
+                  </div>
+
+                  <!-- My Open Issues Card -->
+                  <div class="today-tile-card" id="today-issues-tile" role="button" tabindex="0">
+                    <div class="tile-icon-box" style="background: rgba(245, 158, 11, 0.15); color: #F59E0B;">
+                      ⚠️
+                    </div>
+                    <div class="tile-content">
+                      <span class="tile-label">My Open Issues</span>
+                      <strong class="tile-value" id="today-issues-count">0 Open</strong>
+                      <span class="tile-sub" id="today-issues-sub">Tap to track resolution</span>
+                    </div>
+                    <span class="tile-arrow">&rarr;</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Column 2: What's Near Me Matching Results -->
+              <div class="home-grid-col near-me-results-col">
+                <div class="col-header">
+                  <h3 class="col-title">📍 Matching Spots Near You</h3>
+                  <button class="btn btn-outline btn-sm" onclick="showView('places')">View All Spots &rarr;</button>
+                </div>
+                <div class="cards-list" id="home-places-list">
+                  <!-- Populated dynamically via API -->
+                </div>
+              </div>
+
+              <!-- Column 3: Quick Campus Actions & Updates -->
+              <div class="home-grid-col quick-actions-col">
+                <div class="col-header">
+                  <h3 class="col-title">⚡ Quick Actions</h3>
+                </div>
+
+                <div class="quick-action-grid">
+                  <button class="quick-action-card" id="qa-report-issue">
+                    <div class="action-icon-wrap" style="background: rgba(245, 158, 11, 0.15); color: #F59E0B;">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                      </svg>
+                    </div>
+                    <div class="action-text">
+                      <strong>Report Issue</strong>
+                      <span>Broken fan, leak or light</span>
+                    </div>
+                  </button>
+
+                  <button class="quick-action-card" id="qa-lostfound">
+                    <div class="action-icon-wrap" style="background: rgba(6, 182, 212, 0.15); color: #06B6D4;">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                      </svg>
+                    </div>
+                    <div class="action-text">
+                      <strong>Lost & Found</strong>
+                      <span>Post or claim belongings</span>
+                    </div>
+                  </button>
+
+                  <button class="quick-action-card" id="qa-canteen">
+                    <div class="action-icon-wrap" style="background: rgba(16, 185, 129, 0.15); color: #10B981;">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                      </svg>
+                    </div>
+                    <div class="action-text">
+                      <strong>Canteen Crowd</strong>
+                      <span>Check wait time & vote</span>
+                    </div>
+                  </button>
+
+                  <button class="quick-action-card" id="qa-emergency">
+                    <div class="action-icon-wrap" style="background: rgba(239, 68, 68, 0.15); color: #EF4444;">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                      </svg>
+                    </div>
+                    <div class="action-text">
+                      <strong>Emergency Help</strong>
+                      <span>Ambulance, Security, Warden</span>
+                    </div>
+                  </button>
+                </div>
+
+                <!-- Recent Campus Guidelines / Info Card -->
+                <div class="campus-highlight-card">
+                  <div class="highlight-title">💡 Campus Navigation Tip</div>
+                  <p class="highlight-desc">
+                    Spot status is live-updated by students. When you occupy or leave a charging lounge or study spot, tap <strong>Update Status</strong> to keep fellow students informed!
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ==========================================
+               VIEW 2: PLACES & NAVIGATOR
+               ========================================== -->
+          <section id="view-places" class="view-section">
+            <div class="view-page-header">
+              <div>
+                <h2 class="page-main-title">Campus Navigator & Places</h2>
+                <p class="page-main-desc">Find charging spots, study pods, food courts, and washrooms with real-time availability & route directions.</p>
+              </div>
+            </div>
+
+            <!-- Place Filters Strip -->
+            <div class="chips-row" id="places-filter-chips" style="margin-bottom: 24px;">
+              <button class="chip-btn active" data-type="">All Types</button>
+              <button class="chip-btn" data-type="Charging">⚡ Charging</button>
+              <button class="chip-btn" data-type="Food">🍔 Food</button>
+              <button class="chip-btn" data-type="Washroom">🚻 Washroom</button>
+              <button class="chip-btn" data-type="Study">📚 Study</button>
+              <button class="chip-btn" data-type="Printing">🖨️ Printing</button>
+              <button class="chip-btn" data-type="Water">💧 Water</button>
+              <button class="chip-btn" data-type="Parking">🅿️ Parking</button>
+            </div>
+
+            <!-- Responsive Card Grid (4 cols on wide screen, 3 on desktop, 2 on tablet, 1 on mobile) -->
+            <div class="responsive-card-grid" id="places-list-container">
+              <!-- Dynamically rendered -->
+            </div>
+          </section>
+
+          <!-- ==========================================
+               VIEW 3: EVENTS
+               ========================================== -->
+          <section id="view-events" class="view-section">
+            <div class="view-page-header">
+              <div>
+                <h2 class="page-main-title">Campus Events & Workshops</h2>
+                <p class="page-main-desc">Register for technical hackathons, cultural fests, sports championships and placement clinics.</p>
+              </div>
+              <button id="admin-create-event-btn" class="btn btn-primary" style="display: none;">+ Publish New Event</button>
+            </div>
+
+            <!-- Toolbar: Group Tabs + Filters -->
+            <div class="events-toolbar">
+              <div class="sub-tabs-bar" id="events-group-tabs">
+                <button class="sub-tab-btn active" data-group="all">All Events</button>
+                <button class="sub-tab-btn" data-group="Today">Today</button>
+                <button class="sub-tab-btn" data-group="Tomorrow">Tomorrow</button>
+                <button class="sub-tab-btn" data-group="Later">Upcoming</button>
+              </div>
+            </div>
+
+            <!-- Responsive Card Grid -->
+            <div class="responsive-card-grid" id="events-list-container">
+              <!-- Dynamically rendered -->
+            </div>
+          </section>
+
+          <!-- ==========================================
+               VIEW 4: ISSUES & COMPLAINTS (2-Column Desktop Layout)
+               ========================================== -->
+          <section id="view-issues" class="view-section">
+            <div class="view-page-header">
+              <div>
+                <h2 class="page-main-title">Campus Issue Tracker</h2>
+                <p class="page-main-desc">Crowdsourced campus defect reporting. Upvote common problems to accelerate administrative maintenance.</p>
+              </div>
+              <!-- Mobile modal trigger button -->
+              <button id="open-report-issue-modal-btn" class="btn btn-primary mobile-only-inline-btn">+ Report Issue</button>
+            </div>
+
+            <!-- Desktop 2-Column Layout -->
+            <div class="issues-desktop-layout">
+              
+              <!-- Left Column: Directly Visible Report Form on Desktop -->
+              <div class="issues-form-column">
+                <div class="card-surface issues-form-card">
+                  <h3 class="form-card-title">📝 Report a Defect or Hazard</h3>
+                  <p class="form-card-sub">Submit maintenance requests directly to facility supervisors.</p>
+
+                  <form id="report-issue-form">
+                    <div class="form-group">
+                      <label class="form-label" for="issue-block">Campus Block / Building *</label>
+                      <select id="issue-block" class="form-select" required>
+                        <option value="">Select Building</option>
+                        <!-- Injected from config -->
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="issue-category">Issue Category *</label>
+                      <select id="issue-category" class="form-select" required>
+                        <option value="">Select Category</option>
+                        <option value="fan">Fan issue / Noise</option>
+                        <option value="light">Light / Tube light issue</option>
+                        <option value="water leakage">Water Leakage / Tap issue</option>
+                        <option value="washroom">Washroom hygiene / plumbing</option>
+                        <option value="furniture">Broken Furniture / Bench</option>
+                        <option value="dustbin">Dustbin overflow / Cleanliness</option>
+                        <option value="other">Other Campus Issue</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="issue-description">Problem Description *</label>
+                      <textarea id="issue-description" class="form-textarea" placeholder="Specify room number, floor, and description of the defect..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="issue-photo">Optional Proof Photo</label>
+                      <input type="file" id="issue-photo" accept="image/*" class="form-input">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block" id="submit-issue-btn">
+                      Submit Issue Report
+                    </button>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Right Column: Issue List with Upvotes & Timeline -->
+              <div class="issues-list-column">
+                <div class="issues-list-header">
+                  <div class="sub-tabs-bar" id="issues-subtabs">
+                    <button class="sub-tab-btn active" data-tab="all">All Community Reports</button>
+                    <button class="sub-tab-btn" data-tab="mine">My Reports & Timeline</button>
+                  </div>
+                </div>
+
+                <div class="cards-list issues-items-container" id="issues-list-container">
+                  <!-- Dynamically rendered -->
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ==========================================
+               VIEW 5: CANTEEN CORNER (2-Column Desktop Layout)
+               ========================================== -->
+          <section id="view-canteen" class="view-section">
+            <div class="view-page-header">
+              <div>
+                <h2 class="page-main-title">Canteen Corner & Live Crowd Meter</h2>
+                <p class="page-main-desc">Check live cafeteria crowd levels, estimated food preparation wait times, and today's menu prices.</p>
+              </div>
+            </div>
+
+            <!-- Desktop 2-Column Layout: Menu on Left, Crowd Meter on Right -->
+            <div class="canteen-desktop-layout">
+              
+              <!-- Left Column: Menu Items Table / Grid -->
+              <div class="canteen-menu-column">
+                <div class="canteen-section-header">
+                  <h3 class="section-title">🍽️ Today's Fresh Menu</h3>
+                  <span class="menu-note">All prices in Indian Rupees (₹)</span>
+                </div>
+                <div class="responsive-card-grid canteen-menu-grid" id="canteen-menu-list">
+                  <!-- Menu items populated dynamically -->
+                </div>
+              </div>
+
+              <!-- Right Column: Live Crowd Meter & Student Voting -->
+              <div class="canteen-meter-column">
+                <div class="card-surface crowd-meter-panel">
+                  <div class="panel-header">
+                    <span class="today-badge"><span class="pulse-dot"></span> Live Crowd Meter</span>
+                    <span id="canteen-crowd-timestamp" class="timestamp-label">Updated recently</span>
+                  </div>
+
+                  <div class="crowd-display-box">
+                    <span id="canteen-crowd-status-pill" class="status-pill status-medium crowd-large-pill">
+                      <span class="status-dot"></span> <strong id="canteen-crowd-level">Medium</strong>
+                    </span>
+                    <div class="wait-time-box">
+                      <span class="wait-label">Estimated Wait Time</span>
+                      <strong class="wait-value" id="canteen-crowd-wait">15 - 20 mins</strong>
+                    </div>
+                  </div>
+
+                  <p class="crowd-vote-note">
+                    Calculated from <strong id="canteen-votes-count">0</strong> student votes in the last 30 minutes.
+                  </p>
+
+                  <div class="vote-action-box">
+                    <span class="vote-action-title">Are you at the canteen? Cast your vote:</span>
+                    <div class="vote-buttons-row">
+                      <button class="btn btn-secondary btn-vote-low" id="vote-crowd-low">
+                        🟢 Low (Quick)
+                      </button>
+                      <button class="btn btn-secondary btn-vote-med" id="vote-crowd-med">
+                        🟡 Medium (Busy)
+                      </button>
+                      <button class="btn btn-secondary btn-vote-high" id="vote-crowd-high">
+                        🔴 High (Crowded)
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ==========================================
+               VIEW 6: BUS SCHEDULES
+               ========================================== -->
+          <section id="view-bus" class="view-section">
+            <div class="view-page-header">
+              <div>
+                <h2 class="page-main-title">Campus Bus Timings & Routes</h2>
+                <p class="page-main-desc">Official university transportation shuttles with real-time next-bus calculation.</p>
+              </div>
+            </div>
+
+            <!-- Next Bus Highlight Banner -->
+            <div class="bus-next-banner" id="bus-highlight-card">
+              <div class="banner-badge-row">
+                <span class="today-badge"><span class="pulse-dot"></span> Closest Upcoming Departure</span>
+                <span class="banner-clock" id="bus-time-now">--:--</span>
+              </div>
+              <div class="banner-main-row">
+                <div class="banner-route-info">
+                  <h3 class="banner-route-name" id="bus-highlight-route">Loading Route...</h3>
+                  <p class="banner-route-dest" id="bus-highlight-dest">Please wait...</p>
+                </div>
+                <div class="banner-time-badge">
+                  <span class="pickup-label">Pickup: <strong id="bus-highlight-pickup">Gate 1</strong></span>
+                  <span class="time-pill" id="bus-highlight-time">--:--</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Route Cards / Table Container -->
+            <div class="bus-schedule-container" id="bus-routes-list">
+              <!-- Dynamically populated -->
+            </div>
+          </section>
+
+          <!-- ==========================================
+               VIEW 7: LOST & FOUND
+               ========================================== -->
+          <section id="view-lostfound" class="view-section">
+            <div class="view-page-header">
+              <div>
+                <h2 class="page-main-title">Lost & Found Community Portal</h2>
+                <p class="page-main-desc">Reconnecting students and staff with misplaced campus items and smart ID cards.</p>
+              </div>
+              <button id="open-post-lf-modal-btn" class="btn btn-primary">+ Post Lost or Found Item</button>
+            </div>
+
+            <!-- Filter Toolbar -->
+            <div class="lf-toolbar">
+              <div class="sub-tabs-bar" id="lf-type-tabs">
+                <button class="sub-tab-btn active" data-type="">All Items</button>
+                <button class="sub-tab-btn" data-type="Lost">Lost</button>
+                <button class="sub-tab-btn" data-type="Found">Found</button>
+              </div>
+            </div>
+
+            <!-- Responsive Card Grid -->
+            <div class="responsive-card-grid" id="lostfound-list-container">
+              <!-- Dynamically populated -->
+            </div>
+          </section>
+
+          <!-- ==========================================
+               VIEW 8: EMERGENCY CONTACTS & HELP
+               ========================================== -->
+          <section id="view-contacts" class="view-section">
+            <div class="view-page-header">
+              <div>
+                <h2 class="page-main-title" style="color: var(--danger);">Emergency Contacts & Quick Help</h2>
+                <p class="page-main-desc">Tap-to-call emergency services on campus available 24 hours a day, 7 days a week.</p>
+              </div>
+            </div>
+
+            <!-- Responsive Contact Grid -->
+            <div class="responsive-card-grid" id="contacts-list-container">
+              <!-- Dynamically populated -->
+            </div>
+
+            <!-- Hazard Warning Callout -->
+            <div class="hazard-callout-card">
+              <div class="callout-icon">⚠️</div>
+              <div class="callout-text">
+                <h4 class="callout-title">Spotted a physical hazard on campus?</h4>
+                <p class="callout-desc">Live electrical wiring, broken staircases, or severe water leaks should be immediately reported to campus maintenance.</p>
+                <button class="btn btn-primary btn-sm" id="btn-quick-report-from-help">Report Campus Defect &rarr;</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==========================================
+               VIEW 9: ADMIN PANEL (Full-Width Data Tables)
+               ========================================== -->
+          <section id="view-admin" class="view-section">
+            <div class="view-page-header">
+              <div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <h2 class="page-main-title" style="color: var(--secondary);">Administrator Command Center</h2>
+                  <span class="status-pill status-busy">Superuser Mode</span>
+                </div>
+                <p class="page-main-desc">Oversee reported maintenance issues, toggle cafeteria menu availability, and manage campus events.</p>
+              </div>
+            </div>
+
+            <!-- Admin Subtabs -->
+            <div class="sub-tabs-bar" id="admin-subtabs" style="margin-bottom: 24px; flex-wrap: wrap;">
+              <button class="sub-tab-btn active" data-subtab="issues">Issues</button>
+              <button class="sub-tab-btn" data-subtab="events">Events</button>
+              <button class="sub-tab-btn" data-subtab="canteen">Menu</button>
+              <button class="sub-tab-btn" data-subtab="places">Places</button>
+              <button class="sub-tab-btn" data-subtab="bus">Bus</button>
+              <button class="sub-tab-btn" data-subtab="contacts">Contacts</button>
+            </div>
+
+            <!-- Admin Table / Card Container -->
+            <div id="admin-panel-content">
+              <!-- Dynamically populated -->
+            </div>
+          </section>
+
+          <!-- ==========================================
+               VIEW 10: MORE MENU HUB (Accessible on mobile)
+               ========================================== -->
+          <section id="view-more" class="view-section">
+            <div class="view-page-header">
+              <div>
+                <h2 class="page-main-title">Campus Services Hub</h2>
+                <p class="page-main-desc">Quick shortcuts to all student utilities.</p>
+              </div>
+            </div>
+
+            <div class="more-menu-grid">
+              <div class="item-card more-hub-card" id="menu-btn-canteen" role="button" tabindex="0">
+                <div class="brand-icon" style="background: rgba(16, 185, 129, 0.2); color: #10B981;">🍽️</div>
+                <div>
+                  <strong>Canteen Corner & Menu</strong>
+                  <div style="font-size: 13px; color: var(--text-secondary);">Crowd meter, wait times & pricing</div>
+                </div>
+              </div>
+
+              <div class="item-card more-hub-card" id="menu-btn-bus" role="button" tabindex="0">
+                <div class="brand-icon" style="background: rgba(59, 130, 246, 0.2); color: #3B82F6;">🚌</div>
+                <div>
+                  <strong>Campus Bus Schedules</strong>
+                  <div style="font-size: 13px; color: var(--text-secondary);">Live next-bus departure tracker</div>
+                </div>
+              </div>
+
+              <div class="item-card more-hub-card" id="menu-btn-lostfound" role="button" tabindex="0">
+                <div class="brand-icon" style="background: rgba(6, 182, 212, 0.2); color: #06B6D4;">🔍</div>
+                <div>
+                  <strong>Lost & Found Portal</strong>
+                  <div style="font-size: 13px; color: var(--text-secondary);">Post or claim lost student items</div>
+                </div>
+              </div>
+
+              <div class="item-card more-hub-card" id="menu-btn-emergency" role="button" tabindex="0">
+                <div class="brand-icon" style="background: rgba(239, 68, 68, 0.2); color: #EF4444;">🚨</div>
+                <div>
+                  <strong>Emergency Contacts</strong>
+                  <div style="font-size: 13px; color: var(--text-secondary);">Ambulance, Security & Warden (24x7)</div>
+                </div>
+              </div>
+
+              <div class="item-card more-hub-card" id="menu-btn-admin" role="button" tabindex="0" style="display: none; border-color: rgba(99, 102, 241, 0.4); background: rgba(99, 102, 241, 0.08);">
+                <div class="brand-icon" style="background: var(--primary-gradient); color: #fff;">🛡️</div>
+                <div>
+                  <strong style="color: var(--primary-light);">Admin Command Center</strong>
+                  <div style="font-size: 13px; color: var(--text-secondary);">Manage issues, events, canteen & places</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </main>
+
+      <!-- ==========================================
+           MOBILE BOTTOM NAVIGATION BAR
+           (Visible ONLY on screen widths <768px)
+           ========================================== -->
+      <nav class="app-nav mobile-only-nav">
+        <button class="nav-item active" data-view="home" id="nav-btn-home">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          <span>Home</span>
+        </button>
+
+        <button class="nav-item" data-view="places" id="nav-btn-places">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+          </svg>
+          <span>Places</span>
+        </button>
+
+        <button class="nav-item" data-view="events" id="nav-btn-events">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span>Events</span>
+        </button>
+
+        <button class="nav-item" data-view="issues" id="nav-btn-issues">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <span>Issues</span>
+          <span class="nav-badge" id="nav-issues-badge" style="display: none;">0</span>
+        </button>
+
+        <button class="nav-item" data-view="more" id="nav-btn-more">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="1"></circle>
+            <circle cx="19" cy="12" r="1"></circle>
+            <circle cx="5" cy="12" r="1"></circle>
+            <circle cx="12" cy="19" r="1"></circle>
+            <circle cx="19" cy="19" r="1"></circle>
+            <circle cx="5" cy="19" r="1"></circle>
+            <circle cx="12" cy="5" r="1"></circle>
+            <circle cx="19" cy="5" r="1"></circle>
+            <circle cx="5" cy="5" r="1"></circle>
+          </svg>
+          <span>More</span>
+        </button>
+      </nav>
+
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL DIALOGS (Centered dialogs on desktop, sheets on mobile)
+       ========================================== -->
+
+  <!-- 1. Auth Modal (Login / Signup) -->
+  <div class="modal-backdrop" id="auth-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="auth-modal-title">Student & Admin Portal</h3>
+        <button class="modal-close-btn" id="close-auth-modal-btn">&times;</button>
+      </div>
+
+      <!-- Quick Demo Login Shortcuts -->
+      <div class="demo-login-box">
+        <span class="demo-box-label">⚡ 1-Click Demo Login</span>
+        <div class="demo-box-buttons">
+          <button class="btn btn-secondary btn-sm" id="quick-login-student">
+            👤 Demo Student (Aarav)
+          </button>
+          <button class="btn btn-secondary btn-sm" id="quick-login-admin" style="border-color: rgba(99, 102, 241, 0.5);">
+            🛡️ Demo Admin (Incharge)
+          </button>
+        </div>
+      </div>
+
+      <!-- User Info When Logged In -->
+      <div id="auth-logged-in-box" style="display: none; margin-bottom: 16px;">
+        <div class="item-card">
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+            <div class="brand-icon" id="profile-modal-avatar">A</div>
+            <div>
+              <strong id="profile-modal-name" style="font-size: 16px;">User Name</strong>
+              <div id="profile-modal-email" style="font-size: 13px; color: var(--text-secondary);">user@campus.com</div>
+              <span id="profile-modal-role" class="status-pill status-available" style="margin-top: 6px;">Student</span>
+            </div>
+          </div>
+          <button class="btn btn-secondary btn-block" id="logout-btn">Log Out</button>
+        </div>
+      </div>
+
+      <!-- Forms Container (Login vs Signup) -->
+      <div id="auth-forms-container">
+        <div class="sub-tabs-bar" style="margin-bottom: 16px;">
+          <button class="sub-tab-btn active" id="tab-login-btn">Log In</button>
+          <button class="sub-tab-btn" id="tab-signup-btn">Sign Up</button>
+        </div>
+
+        <form id="login-form">
+          <div class="form-group">
+            <label class="form-label" for="login-email">Email Address</label>
+            <input type="email" id="login-email" class="form-input" placeholder="student@campus.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="login-password">Password</label>
+            <input type="password" id="login-password" class="form-input" placeholder="••••••••" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;">Log In</button>
+        </form>
+
+        <form id="signup-form" style="display: none;">
+          <div class="form-group">
+            <label class="form-label" for="signup-name">Full Name</label>
+            <input type="text" id="signup-name" class="form-input" placeholder="e.g. Rohan Gupta" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="signup-email">College Email</label>
+            <input type="email" id="signup-email" class="form-input" placeholder="e.g. rohan.gupta@campus.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="signup-password">Password (min 6 characters)</label>
+            <input type="password" id="signup-password" class="form-input" placeholder="••••••••" minlength="6" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;">Create Student Account</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Directions Detail Modal -->
+  <div class="modal-backdrop" id="directions-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="directions-place-name">Directions</h3>
+        <button class="modal-close-btn" id="close-directions-modal-btn">&times;</button>
+      </div>
+      <div id="directions-modal-content">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Update Place Status Modal (Crowdsourced) -->
+  <div class="modal-backdrop" id="update-place-status-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Update Live Status</h3>
+        <button class="modal-close-btn" id="close-status-modal-btn">&times;</button>
+      </div>
+      <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">
+        Help fellow students know if this spot is currently available!
+      </p>
+      <input type="hidden" id="status-target-place-id">
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <button class="btn btn-secondary btn-block" id="btn-status-available" style="border-left: 4px solid var(--success); justify-content: flex-start; padding: 12px 16px;">
+          🟢 Available (Free seats / Open to use)
+        </button>
+        <button class="btn btn-secondary btn-block" id="btn-status-busy" style="border-left: 4px solid var(--warning); justify-content: flex-start; padding: 12px 16px;">
+          🟡 Busy (Crowded / Limited spots)
+        </button>
+        <button class="btn btn-secondary btn-block" id="btn-status-full" style="border-left: 4px solid var(--danger); justify-content: flex-start; padding: 12px 16px;">
+          🔴 Full (Completely occupied / Out of service)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Report Issue Modal (Used for mobile or direct trigger) -->
+  <div class="modal-backdrop" id="report-issue-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Report Campus Issue</h3>
+        <button class="modal-close-btn" id="close-issue-modal-btn">&times;</button>
+      </div>
+      <form id="modal-report-issue-form">
+        <div class="form-group">
+          <label class="form-label" for="modal-issue-block">Campus Block / Building *</label>
+          <select id="modal-issue-block" class="form-select" required>
+            <option value="">Select Building</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="modal-issue-category">Issue Category *</label>
+          <select id="modal-issue-category" class="form-select" required>
+            <option value="">Select Category</option>
+            <option value="fan">Fan issue / Noise</option>
+            <option value="light">Light / Tube light issue</option>
+            <option value="water leakage">Water Leakage / Tap issue</option>
+            <option value="washroom">Washroom cleanliness</option>
+            <option value="furniture">Broken Furniture / Bench</option>
+            <option value="dustbin">Dustbin overflow</option>
+            <option value="other">Other Campus Issue</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="modal-issue-description">Problem Description *</label>
+          <textarea id="modal-issue-description" class="form-textarea" placeholder="Specify room number, floor, and description..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="modal-issue-photo">Optional Proof Photo</label>
+          <input type="file" id="modal-issue-photo" accept="image/*" class="form-input">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;" id="modal-submit-issue-btn">
+          Submit Report
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 5. Post Lost & Found Modal -->
+  <div class="modal-backdrop" id="post-lf-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Post Lost / Found Item</h3>
+        <button class="modal-close-btn" id="close-lf-modal-btn">&times;</button>
+      </div>
+      <form id="post-lf-form">
+        <div class="form-group">
+          <label class="form-label" for="lf-type">Item Status *</label>
+          <select id="lf-type" class="form-select" required>
+            <option value="Lost">Lost (I lost something)</option>
+            <option value="Found">Found (I found someone's item)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="lf-title">Item Title *</label>
+          <input type="text" id="lf-title" class="form-input" placeholder="e.g. Fastrack Black Watch, Blue ID Card" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="lf-category">Category *</label>
+          <select id="lf-category" class="form-select" required>
+            <option value="phone">Smartphone</option>
+            <option value="ID card">Student ID Card</option>
+            <option value="keys">Keys / Keychain</option>
+            <option value="book">Textbook / Notebook</option>
+            <option value="earphones">Earphones / TWS</option>
+            <option value="other">Other Item</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="lf-location">Location (Where lost / found) *</label>
+          <input type="text" id="lf-location" class="form-input" placeholder="e.g. Central Library 2nd Floor" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="lf-description">Description & Details *</label>
+          <textarea id="lf-description" class="form-textarea" placeholder="Color, brand markings, or condition..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="lf-contact">Contact Info (Phone / Email) *</label>
+          <input type="text" id="lf-contact" class="form-input" placeholder="e.g. +91 98765 43210 or Security Gate 1" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="lf-photo">Optional Item Photo</label>
+          <input type="file" id="lf-photo" accept="image/*" class="form-input">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;" id="submit-lf-btn">
+          Post Item
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 6. Admin Create Event Modal -->
+  <div class="modal-backdrop" id="create-event-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Publish Campus Event</h3>
+        <button class="modal-close-btn" id="close-event-modal-btn">&times;</button>
+      </div>
+      <form id="create-event-form">
+        <div class="form-group">
+          <label class="form-label" for="ev-title">Event Title *</label>
+          <input type="text" id="ev-title" class="form-input" placeholder="e.g. Annual Robotics Hackathon 2026" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="ev-category">Category *</label>
+          <select id="ev-category" class="form-select" required>
+            <option value="Technical">Technical</option>
+            <option value="Workshop">Workshop</option>
+            <option value="Sports">Sports</option>
+            <option value="Cultural">Cultural</option>
+            <option value="Career & Placement">Career & Placement</option>
+            <option value="Club Activity">Club Activity</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="ev-location">Location / Hall *</label>
+          <input type="text" id="ev-location" class="form-input" placeholder="e.g. Ramanujan Hall 401" required>
+        </div>
+        <div style="display: flex; gap: 12px;">
+          <div class="form-group" style="flex: 1;">
+            <label class="form-label" for="ev-date">Date (YYYY-MM-DD) *</label>
+            <input type="date" id="ev-date" class="form-input" required>
+          </div>
+          <div class="form-group" style="flex: 1;">
+            <label class="form-label" for="ev-time">Time (e.g. 10:00 AM) *</label>
+            <input type="text" id="ev-time" class="form-input" placeholder="10:00 AM" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="ev-desc">Event Description</label>
+          <textarea id="ev-desc" class="form-textarea" placeholder="Prizes, mentors, schedule..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;">Publish Event</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 7. Global Search Modal Dialog -->
+  <div class="modal-backdrop" id="search-modal">
+    <div class="modal-dialog search-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Search Results</h3>
+        <button class="modal-close-btn" id="close-search-modal-btn">&times;</button>
+      </div>
+      <div id="search-modal-results" class="cards-list">
+        <!-- Results injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
